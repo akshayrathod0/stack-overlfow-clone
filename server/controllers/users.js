@@ -13,6 +13,7 @@ export const getAllUsers = async (req, res) => {
         res.status(404).json({ message: error.message });
     }
 }
+// comment for update git repository
 
 export const updateProfile = async (req, res) => {
     const { id: _id } = req.params;
