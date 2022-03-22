@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { Component, useState} from 'react'
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom'
 import { useSelector, useDispatch} from 'react-redux'
 import moment from 'moment'
@@ -10,6 +10,9 @@ import './Questions.css'
 import Avatar from '../../components/Avatar/Avatar'
 import DisplayAnswer from './DisplayAnswer'
 import { postAnswer, deleteQuestion, voteQuestion } from '../../actions/question'
+
+import Comment from './Comment'
+
 
 const QuestionsDetails = () => {
     const { id } = useParams()
@@ -66,6 +69,7 @@ const QuestionsDetails = () => {
     //         userId: 2,
     //     }]
     // }]
+   
     const [Answer, setAnswer] = useState('')
     const Navigate = useNavigate()
     const dispatch = useDispatch()
@@ -103,7 +107,7 @@ const QuestionsDetails = () => {
     const handleDownVote = () => {
         dispatch(voteQuestion(id, 'downVote'))
     }
- 
+    
     return (
         <div className='question-details-page'>
             {
@@ -165,12 +169,12 @@ const QuestionsDetails = () => {
                                     <form onSubmit={ (e) => { handlePostAns(e, question.answer.length) }}>
                                         <textarea name="" id="" cols="30" rows="10" onChange={e => setAnswer(e.target.value)}></textarea><br />
                                         
-                                        {/* newly added function that is called as comment function why this function is addes because of the cliet satisfaction */}
-                                        <input type="text" placeholder='add comment here' width='500'  />
-
-                                        <input type="Submit" className='post-ans-btn' value='Post Your Answer' style={{padding:"10px"}}/>
+                                          
+                                        <input type="Submit" className='post-ans-btn' value='Post Your Answer'/>
                                     </form>
                                     <p>
+                                    <a  href="/Comment" role="button" style={{textDecoration:"none"}}> Add a comment      </a>
+                                        
                                         Browse other Question tagged
                                         {
                                             question.questionTags.map((tag) => (
