@@ -1,1 +1,1 @@
-# this is stack overflow clone in created with react.js programming
+# this is stack overflow clone is created with react.js programming
